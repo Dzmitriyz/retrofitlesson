@@ -1,8 +1,9 @@
 package com.example.retrofitlesson.retrofit
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ProductAPI {
-    @GET("products/1")
-    suspend fun getProductById():Product
+    @GET("products/{id}")
+    suspend fun getProductById(@Path("id") id: Int):Product
 }
