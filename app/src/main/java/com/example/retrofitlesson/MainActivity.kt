@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                     txt.text =(productAPI.title);
                 }
         }
+
         }
     }
 }
