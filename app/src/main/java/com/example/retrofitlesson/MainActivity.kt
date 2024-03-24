@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val productAPI = productAPI.getProductById(3)
                 runOnUiThread {
-                    txt.text =(productAPI.title);
-                }
+                    txt.text =(productAPI.title); }
         }
 
         }
