@@ -7,7 +7,9 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofitlesson.adapter.ProductAdapter
 import com.example.retrofitlesson.databinding.ActivityMainBinding
+import com.example.retrofitlesson.retrofit.AuthRequest
 import com.example.retrofitlesson.retrofit.MainAPI
+import com.example.retrofitlesson.retrofit.Users
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,11 +27,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Гость"
         adapter = ProductAdapter()
         binding.rcView.layoutManager=LinearLayoutManager(this)
         binding.rcView.adapter=adapter
-
-
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -39,13 +40,24 @@ class MainActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create()).build()
         val mainAPI = retrofit.create(MainAPI::class.java)
 
+        var user: Users? = null
+        CoroutineScope(Dispatchers.IO).launch {
+             /*user = mainAPI.auth(
+                 AuthRequest(
+                     "kminchelle",
+                     "0lelplR"
+                 )
+             )
+            supportActionBar?.title = user?.firstName  */
+            }
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?):Boolean{
                 return true
             }
             override fun onQueryTextChange(text: String?):Boolean{
                 CoroutineScope(Dispatchers.IO).launch {
-                    val list = text?.let { mainAPI.getProductByName(it) }
+                    val list = text?.let { mainAPI.getProductByNameAuth(user?.token ?:"", it)  }
                     runOnUiThread {
                         binding.apply {
                             adapter.submitList(list?.products)

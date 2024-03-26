@@ -12,8 +12,5 @@ class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ContentBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
-
 }

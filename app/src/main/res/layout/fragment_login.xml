@@ -9,15 +9,17 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:text="Button"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/bSignIn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/nameTxt"
@@ -34,8 +36,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="116dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,4 +68,25 @@
         app:layout_constraintEnd_toEndOf="@+id/LoginEdit"
         app:layout_constraintStart_toStartOf="@+id/LoginEdit"
         app:layout_constraintTop_toBottomOf="@+id/LoginEdit" />
+
+    <Button
+        android:id="@+id/bSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Sing in"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
+        app:layout_constraintStart_toStartOf="@+id/passwordEdit"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
+
+    <TextView
+        android:id="@+id/errorTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="#EA0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
